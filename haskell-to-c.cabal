@@ -1,0 +1,40 @@
+-- This file has been generated from package.yaml by hpack version 0.18.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           haskell-to-c
+version:        0.0.1
+synopsis:       Example of producing a C library from Haskell code
+category:       System
+homepage:       https://github.com/jwiegley/haskell-to-c#readme
+bug-reports:    https://github.com/jwiegley/haskell-to-c/issues
+author:         John Wiegley
+maintainer:     johnw@newartisans.com
+license:        MIT
+build-type:     Simple
+cabal-version:  >= 1.10
+
+source-repository head
+  type: git
+  location: https://github.com/jwiegley/haskell-to-c
+
+library
+  build-depends:
+      base     >= 4.9   && < 4.10
+  exposed-modules:
+      Library
+  other-modules:
+      Paths_haskell_to_c
+  default-language: Haskell2010
+
+executable driver
+  main-is: main.c
+  hs-source-dirs:
+      test
+  ghc-options: -no-hs-main
+  build-depends:
+      base     >= 4.9   && < 4.10
+    , haskell-to-c
+  other-modules:
+      Stub
+  default-language: Haskell2010

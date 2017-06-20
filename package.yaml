@@ -1,0 +1,25 @@
+name:       haskell-to-c
+version:    0.0.1
+synopsis:   Example of producing a C library from Haskell code
+github:     jwiegley/haskell-to-c
+author:     John Wiegley
+maintainer: johnw@newartisans.com
+category:   System
+license:    MIT
+
+dependencies:
+  - base     >= 4.9   && < 4.10
+
+library:
+  exposed-modules:
+    - Library
+
+executables:
+  driver:
+    main: main.c
+    other-modules: Stub
+    ghc-options: -no-hs-main
+    source-dirs:
+      - test
+    dependencies:
+      - haskell-to-c
