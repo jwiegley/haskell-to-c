@@ -19,21 +19,40 @@ source-repository head
   location: https://github.com/jwiegley/haskell-to-c
 
 library
+  include-dirs:
+      ./.
   build-depends:
-      base     >= 4.9   && < 4.10
+      base     >= 4.9   && < 5
+    , vector
+    , bindings-DSL
   exposed-modules:
       Library
+      MainIntf
   other-modules:
       Paths_haskell_to_c
   default-language: Haskell2010
 
-executable driver
+executable c-driver
   main-is: main.c
-  hs-source-dirs:
-      test
   ghc-options: -no-hs-main
   build-depends:
-      base     >= 4.9   && < 4.10
+      base     >= 4.9   && < 5
+    , vector
+    , bindings-DSL
+    , haskell-to-c
+  other-modules:
+      Stub
+  default-language: Haskell2010
+
+executable cpp-driver
+  main-is: main.cpp
+  ghc-options: -no-hs-main
+  extra-libraries:
+      c++
+  build-depends:
+      base     >= 4.9   && < 5
+    , vector
+    , bindings-DSL
     , haskell-to-c
   other-modules:
       Stub

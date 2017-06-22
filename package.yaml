@@ -8,18 +8,30 @@ category:   System
 license:    MIT
 
 dependencies:
-  - base     >= 4.9   && < 4.10
+  - base     >= 4.9   && < 5
+  - vector
+  - bindings-DSL
 
 library:
   exposed-modules:
     - Library
+    - MainIntf
+  include-dirs:
+    - .
 
 executables:
-  driver:
+  c-driver:
     main: main.c
     other-modules: Stub
     ghc-options: -no-hs-main
-    source-dirs:
-      - test
+    dependencies:
+      - haskell-to-c
+
+  cpp-driver:
+    main: main.cpp
+    other-modules: Stub
+    ghc-options: -no-hs-main
+    extra-libraries:
+      - c++
     dependencies:
       - haskell-to-c
